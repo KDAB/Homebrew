@@ -2,8 +2,8 @@ require 'formula'
 require 'hardware'
 
 class Qt < Formula
-  url 'http://get.qt.nokia.com/qt/source/qt-everywhere-opensource-src-4.7.4.tar.gz'
-  md5 '9831cf1dfa8d0689a06c2c54c5c65aaf'
+  url 'http://get.qt.nokia.com/qt/source/qt-everywhere-opensource-src-4.6.4.tar.gz'
+  md5 '8ac880cc07a130c39607b65efd5e1421'
   homepage 'http://qt.nokia.com/'
   bottle 'https://downloads.sf.net/project/machomebrew/Bottles/qt-4.7.4-bottle.tar.gz'
   bottle_sha1 '3195cddb76c0d13b4500dc75cc55f20f00c10ef1'
@@ -20,7 +20,6 @@ class Qt < Formula
   def options
     [
       ['--with-qtdbus', "Enable QtDBus module."],
-      ['--with-qt3support', "Enable deprecated Qt3Support module."],
       ['--with-demos-examples', "Enable Qt demos and examples."],
       ['--with-debug-and-release', "Compile Qt in debug and release mode."],
       ['--universal', "Build both x86_64 and x86 architectures."],
@@ -31,11 +30,9 @@ class Qt < Formula
   depends_on 'sqlite' if MacOS.leopard?
 
   def install
-    ENV.x11
     ENV.append "CXXFLAGS", "-fvisibility=hidden"
     args = ["-prefix", prefix,
-            "-system-libpng", "-system-zlib",
-            "-L/usr/X11/lib", "-I/usr/X11/include",
+            "-system-zlib",
             "-confirm-license", "-opensource",
             "-cocoa", "-fast" ]
 
@@ -46,12 +43,6 @@ class Qt < Formula
     if ARGV.include? '--with-qtdbus'
       args << "-I#{Formula.factory('d-bus').lib}/dbus-1.0/include"
       args << "-I#{Formula.factory('d-bus').include}/dbus-1.0"
-    end
-
-    if ARGV.include? '--with-qt3support'
-      args << "-qt3support"
-    else
-      args << "-no-qt3support"
     end
 
     unless ARGV.include? '--with-demos-examples'
