@@ -23,11 +23,16 @@ class Qt < Formula
   option 'with-mysql', 'Enable MySQL plugin'
   option 'developer', 'Compile and link Qt with developer options'
 
+  fails_with :clang do
+    build 421
+  end
+
   depends_on :libpng
 
-  depends_on "d-bus" if build.include? 'with-qtdbus'
-  depends_on "mysql" if build.include? 'with-mysql'
-  depends_on 'sqlite' if MacOS.version == :leopard
+  forced = true
+  depends_on "d-bus" if forced or build.include? 'with-qtdbus'
+  depends_on "mysql" if forced or build.include? 'with-mysql'
+  depends_on 'sqlite' if forced or MacOS.version == :leopard
 
   def patches
     # Fixes compilation failure on Leopard.
@@ -49,32 +54,32 @@ class Qt < Formula
     args << "-platform" << "unsupported/macx-clang" if ENV.compiler == :clang
 
     # See: https://github.com/mxcl/homebrew/issues/issue/744
-    args << "-system-sqlite" if MacOS.version == :leopard
+    args << "-system-sqlite" # forced if MacOS.leopard?
+    args << "-plugin-sql-mysql" # forced if (HOMEBREW_CELLAR+"mysql").directory?
 
-    args << "-plugin-sql-mysql" if build.include? 'with-mysql'
-
-    if build.include? 'with-qtdbus'
+    # forced
+    #if build.include? 'with-qtdbus'
       args << "-I#{Formula.factory('d-bus').lib}/dbus-1.0/include"
       args << "-I#{Formula.factory('d-bus').include}/dbus-1.0"
-    end
+    # forced end
 
-    if build.include? 'with-qt3support'
+    # forced if ARGV.include? '--with-qt3support'
       args << "-qt3support"
-    else
-      args << "-no-qt3support"
-    end
+    # forced else
+    # forced   args << "-no-qt3support"
+    # forced end
 
     unless build.include? 'with-demos-examples'
       args << "-nomake" << "demos" << "-nomake" << "examples"
     end
 
-    if MacOS.prefer_64_bit? or build.universal?
+    # forced if MacOS.prefer_64_bit? or ARGV.build_universal?
       args << '-arch' << 'x86_64'
-    end
+    # forced end
 
-    if !MacOS.prefer_64_bit? or build.universal?
+    # forced if !MacOS.prefer_64_bit? or ARGV.build_universal?
       args << '-arch' << 'x86'
-    end
+    # forced end
 
     if build.include? 'with-debug-and-release'
       args << "-debug-and-release"

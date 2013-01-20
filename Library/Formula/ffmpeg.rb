@@ -7,6 +7,15 @@ class Ffmpeg < Formula
 
   head 'git://git.videolan.org/ffmpeg.git'
 
+  fails_with_llvm 'Undefined symbols when linking `libavfilter`'
+
+  def options
+    [
+      ["--with-tools", "Install additional FFmpeg tools."],
+      ["--with-ffplay", "Build ffplay."]
+    ]
+  end
+
   option "without-x264", "Disable H264 encoder"
   option "without-faac", "Disable AAC encoder"
   option "without-lame", "Disable MP3 encoder"
@@ -55,6 +64,8 @@ class Ffmpeg < Formula
   depends_on 'opus' if build.include? 'with-opus'
 
   def install
+    ENV.x11
+    raise "ENV.cc == #{ENV.cc}" unless ENV.cc == 'clang'
     args = ["--prefix=#{prefix}",
             "--enable-shared",
             "--enable-pthreads",
