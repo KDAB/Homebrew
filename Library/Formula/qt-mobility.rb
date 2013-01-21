@@ -9,6 +9,8 @@ class QtMobility < Formula
 
   def install
     system "./configure", "-release", "-prefix", prefix, "-qmake-exec", "#{HOMEBREW_PREFIX}/bin/qmake"
+    system "make"
+    ENV.j1
     system "make install"
 
     # Move all .apps out of the "bin/" and into the prefix (like qt formula)
