@@ -63,23 +63,23 @@ class Qt < Formula
       args << "-I#{Formula.factory('d-bus').include}/dbus-1.0"
     # forced end
 
-    # forced if ARGV.include? '--with-qt3support'
+    if ARGV.include? '--with-qt3support'
       args << "-qt3support"
-    # forced else
-    # forced   args << "-no-qt3support"
-    # forced end
+    else
+       args << "-no-qt3support"
+    end
 
     unless build.include? 'with-demos-examples'
       args << "-nomake" << "demos" << "-nomake" << "examples"
     end
 
-    # forced if MacOS.prefer_64_bit? or ARGV.build_universal?
+    if MacOS.prefer_64_bit? or ARGV.build_universal?
       args << '-arch' << 'x86_64'
-    # forced end
+    end
 
-    # forced if !MacOS.prefer_64_bit? or ARGV.build_universal?
+    if !MacOS.prefer_64_bit? or ARGV.build_universal?
       args << '-arch' << 'x86'
-    # forced end
+    end
 
     if build.include? 'with-debug-and-release'
       args << "-debug-and-release"
