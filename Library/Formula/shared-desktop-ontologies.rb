@@ -2,8 +2,8 @@ require 'formula'
 
 class SharedDesktopOntologies < Formula
   homepage 'http://sourceforge.net/apps/trac/oscaf/'
-  url 'http://downloads.sourceforge.net/project/oscaf/shared-desktop-ontologies/0.9/shared-desktop-ontologies-0.9.0.tar.bz2?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Foscaf%2Ffiles%2F&ts=1331464711&use_mirror=superb-dca2'
-  md5 '8cd0950dc66eb5fbe560ac7fdb416e04'
+  url 'http://sourceforge.net/projects/oscaf/files/shared-desktop-ontologies/0.10.0/shared-desktop-ontologies-0.10.0.tar.bz2/download'
+  md5 'bfb7b5acbb43e5e45466c87dbe9c45b7'
 
   depends_on 'cmake' => :build
 
