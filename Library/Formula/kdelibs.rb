@@ -9,6 +9,7 @@ class Kdelibs < BaseKdeFormula
     url 'http://download.kde.org/unstable/4.9.95/src/kdelibs-4.9.95.tar.xz'
     sha1 'c770a1752fb0c7cb9e2df0e424051eef57c0c9ee'
   end
+  depends_on 'automoc4' => :build
   depends_on 'gettext'
   depends_on 'pcre'
   depends_on 'jpeg'
