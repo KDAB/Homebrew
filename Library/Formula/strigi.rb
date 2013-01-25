@@ -8,6 +8,8 @@ class Strigi < BaseKdeFormula
   depends_on 'clucene'
   #depends_on 'ffmpeg'
   depends_on 'exiv2' => :optional
+  depends_on 'cmake' => :build
+  depends_on 'cppunit' => :build
 
   def extra_cmake_args
     "-DENABLE_EXPAT:BOOL=ON -DENABLE_DBUS:BOOL=OFF"
