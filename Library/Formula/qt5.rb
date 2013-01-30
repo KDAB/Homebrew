@@ -25,8 +25,6 @@ class Qt5 < Formula
             "-confirm-license", "-opensource",
             "-fast" ]
 
-    args << "-L#{MacOS::X11.prefix}/lib" << "-I#{MacOS::X11.prefix}/include" if MacOS::X11.installed?
-
     args << "-plugin-sql-mysql" if build.include? 'with-mysql'
 
     if build.include? 'with-qtdbus'
