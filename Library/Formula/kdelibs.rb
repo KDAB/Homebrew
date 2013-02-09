@@ -2,8 +2,8 @@ require 'base_kde_formula'
 
 class Kdelibs < BaseKdeFormula
   homepage 'http://www.kde.org/'
-  url 'http://download.kde.org/stable/4.9.4/src/kdelibs-4.9.4.tar.xz'
-  sha1 'b2fe70261207a96a26b5d8789379f134e3e070be'
+  url 'http://download.kde.org/stable/4.10.0/src/kdelibs-4.10.0.tar.xz'
+  sha1 '093bfd214511bae7fda88242413c6ed4ff0b18f0'
 
   devel do
     url 'http://download.kde.org/unstable/4.9.95/src/kdelibs-4.9.95.tar.xz'
