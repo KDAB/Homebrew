@@ -12,4 +12,5 @@ class OxygenIcons < BaseKdeFormula
   end
 
   depends_on 'xz' => :build
+  depends_on 'cmake' => :build
 end
