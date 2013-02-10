@@ -2,8 +2,8 @@ require 'base_kde_formula'
 
 class KdeRuntime < BaseKdeFormula
   homepage 'http://www.kde.org/'
-  url 'http://download.kde.org/stable/4.9.4/src/kde-runtime-4.9.4.tar.xz'
-  sha1 '8988c3684c05efc676d1bfe454480f60d75fac3b'
+  url 'http://download.kde.org/stable/4.10.0/src/kde-runtime-4.10.0.tar.xz'
+  sha1 'eff82d54383ece321dc93bdfb494c0a9abcbb998'
 
   devel do
     url 'http://download.kde.org/unstable/4.9.95/src/kde-runtime-4.9.95.tar.xz'
