@@ -10,6 +10,7 @@ class Kdelibs < BaseKdeFormula
     sha1 'c770a1752fb0c7cb9e2df0e424051eef57c0c9ee'
   end
   depends_on 'automoc4' => :build
+  depends_on 'cmake' => :build
   depends_on 'gettext'
   depends_on 'pcre'
   depends_on 'jpeg'
@@ -35,7 +36,9 @@ class Kdelibs < BaseKdeFormula
       "http://svn.macports.org/repository/macports/trunk/dports/kde/kdelibs4/files/workaround-kdeinit4-crash.patch",
       "http://svn.macports.org/repository/macports/trunk/dports/kde/kdelibs4/files/patch-cmake-modules-FindKDE4-Internal.cmake.diff",
       "http://svn.macports.org/repository/macports/trunk/dports/kde/kdelibs4/files/patch-cmake-modules-FindPhonon.cmake.diff",
-      "http://svn.macports.org/repository/macports/trunk/dports/kde/kdelibs4/files/patch-cmake-modules-FindQt4.cmake.diff"
+      "http://svn.macports.org/repository/macports/trunk/dports/kde/kdelibs4/files/patch-cmake-modules-FindQt4.cmake.diff",
+      "http://www.kdab.com/~till/0001-Fix-build-with-Mac-OSX.patch"
+
     ]}
   end
   
@@ -109,3 +112,4 @@ end
 #      Either Avahi or DNSSD is required for KDE applications to make use of multicast DNS/DNS-SD service discovery
 # 
 # -----------------------------------------------------------------------------
+#
