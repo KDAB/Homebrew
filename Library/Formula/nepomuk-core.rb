@@ -2,8 +2,8 @@ require 'base_kde_formula'
 
 class NepomukCore < BaseKdeFormula
   homepage 'http://www.kde.org/'
-  url 'http://download.kde.org/stable/4.9.4/src/nepomuk-core-4.9.4.tar.xz'
-  sha1 'f48b29dbbaec3938930176d3225fe292c26c9fce'
+  url 'http://download.kde.org/stable/4.10.0/src/nepomuk-core-4.10.0.tar.xz'
+  sha1 'affc4d3063db773e5b05ff746a4c64adbec29264'
 
   devel do
     url 'http://download.kde.org/unstable/4.9.95/src/nepomuk-core-4.9.95.tar.xz'
@@ -11,4 +11,5 @@ class NepomukCore < BaseKdeFormula
   end
 
   depends_on 'kdelibs'
+  depends_on 'cmake' => :build
 end
