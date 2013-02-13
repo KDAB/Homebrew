@@ -10,9 +10,12 @@ class KdeRuntime < BaseKdeFormula
     sha1 'b5c271ddf335970d2d68395162b73f087efea4c4'
   end
 
+  depends_on 'cmake' => :build
   depends_on 'kde-phonon'
+  depends_on 'nepomuk-core'
   depends_on 'oxygen-icons'
   depends_on 'kdelibs'
+  depends_on 'kdepimlibs'
 
   def extra_cmake_args
     phonon = Formula.factory 'kde-phonon'
