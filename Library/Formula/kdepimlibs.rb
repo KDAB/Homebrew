@@ -9,6 +9,8 @@ class Kdepimlibs < BaseKdeFormula
     url 'http://download.kde.org/unstable/4.9.95/src/kdepimlibs-4.9.95.tar.xz'
     sha1 '1a88826f75143ad2f2ab76d1c434a643ba1db5be'
   end
+  
+  head 'git://anongit.kde.org/kdepimlibs.git'
 
   depends_on 'cmake' => :build
   depends_on 'kdelibs'
