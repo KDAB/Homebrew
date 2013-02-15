@@ -2,8 +2,10 @@ require 'base_kde_formula'
 
 class Kdepim < BaseKdeFormula
   homepage 'http://www.kde.org/'
-  url 'http://download.kde.org/stable/4.9.4/src/kdepim-4.9.4.tar.xz'
-  sha1 'f383306430705ff2af14518b9be90448bf857398'
+  url 'http://download.kde.org/stable/4.10.0/src/kdepim-4.10.0.tar.xz'
+  sha1 '6074fcea53b10c3660c5cc9a00b65e777840fdc4'
+
+  head 'git://anongit.kde.org/kdepim.git'
 
   devel do
     url 'http://download.kde.org/unstable/4.9.95/src/kdepim-4.9.95.tar.xz'
@@ -11,4 +13,5 @@ class Kdepim < BaseKdeFormula
   end
 
   depends_on 'kdepimlibs'
+  depends_on 'cmake' => :build
 end
